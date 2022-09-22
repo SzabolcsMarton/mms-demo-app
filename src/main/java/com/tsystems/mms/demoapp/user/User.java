@@ -5,10 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Email;
+
+import com.tsystems.mms.demoapp.organizational_unit.OrganizationalUnit;
 
 import java.io.Serializable;
 
@@ -26,6 +29,9 @@ public class User implements Serializable {
   @Email
   @NotBlank
   private String email;
+  
+  @ManyToOne
+  private OrganizationalUnit organizationalUnit;
   
   @Column(name = "first_name", nullable = false)
   private String firtsName;
@@ -75,6 +81,14 @@ public void setSurname(String surname) {
 
 public void setGender(UserGender gender) {
     this.gender = gender;
+}
+
+public OrganizationalUnit getOrganizationalUnit() {
+    return organizationalUnit;
+}
+
+public void setOrganizationalUnit(OrganizationalUnit organizationalUnit) {
+    this.organizationalUnit = organizationalUnit;
 }
 
 }
