@@ -9,17 +9,29 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="email" type="VARCHAR(512)"/>
-        </createTable>
+            <column name="first_name" type="VARCHAR(20)"/>
+            <column name="surname" type="VARCHAR(20)"/>
+            <column name="gender" type="VARCHAR(10)"/>
+        </createTable>        
     </changeSet>
     <changeSet id="dummy-user" author="mse">
         <insert tableName="demo_user">
             <column name="email">foo@bar.com</column>
+            <column name="first_name">Jane</column>
+            <column name="surname">Doe</column>
+            <column name = "gender">FEMALE</column>
         </insert>
         <insert tableName="demo_user">
             <column name="email">bar@foo.com</column>
+             <column name="first_name">John</column>
+            <column name="surname">Doe</column>
+            <column name = "gender">MALE</column>
         </insert>
         <insert tableName="demo_user">
             <column name="email">fooBar@bar.com</column>
+             <column name="first_name">Jack</column>
+            <column name="surname">Doe</column>
+            <column name = "gender">MALE</column>
         </insert>
     </changeSet>
 </databaseChangeLog>

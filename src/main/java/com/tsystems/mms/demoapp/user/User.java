@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Email;
+
 import java.io.Serializable;
 
 @Entity
@@ -19,12 +23,24 @@ public class User implements Serializable {
   protected Long id;
 
   @Column(name = "email", nullable = false)
+  @Email
+  @NotBlank
   private String email;
-
+  
+  @Column(name = "first_name", nullable = false)
+  private String firtsName;
+  
+  @Column(name = "surname", nullable = false)
+  private String surname;
+  
+  
+  @Column(name ="gender", nullable = false)
+  private UserGender gender;
+  
   public Long getId() {
     return id;
-  }
-
+  } 
+  
   public void setId(Long id) {
     this.id = id;
   }
@@ -36,4 +52,29 @@ public class User implements Serializable {
   public void setEmail(String email) {
     this.email = email;
   }
+
+public String getFirtsName() {
+    return firtsName;
+}
+
+public void setFirtsName(String firtsName) {
+    this.firtsName = firtsName;
+}
+
+public String getSurname() {
+    return surname;
+}
+
+public UserGender getGender() {
+    return gender;
+}
+
+public void setSurname(String surname) {
+    this.surname = surname;
+}
+
+public void setGender(UserGender gender) {
+    this.gender = gender;
+}
+
 }

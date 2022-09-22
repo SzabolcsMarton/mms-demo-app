@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * RESTful API controller for managing users.
@@ -51,9 +50,9 @@ public class UserController {
   @PostMapping("/user")
   public ResponseEntity<User> createUser(@RequestBody User user){
       User savedUser = userService.insert(user);
-      HttpHeaders httpHeaders = new HttpHeaders();
-      httpHeaders.add("user", "/api/v1.0/user/" + savedUser.getId().toString());
-      return new ResponseEntity(savedUser, httpHeaders, HttpStatus.CREATED);
+      return ResponseEntity
+              .created(URI.create("/api/v1.0/user/" + savedUser.getId()))
+              .build();
 
   }
   

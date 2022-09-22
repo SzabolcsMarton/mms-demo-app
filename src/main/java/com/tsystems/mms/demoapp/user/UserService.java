@@ -33,6 +33,9 @@ public class UserService {
   public void updateUser(Long id, User user) {
       User userFromDb = userRepository.findById(id).get();
       userFromDb.setEmail(user.getEmail());
+      userFromDb.setFirtsName(user.getFirtsName());
+      userFromDb.setSurname(user.getSurname());
+      userFromDb.setGender(user.getGender());
       userRepository.save(userFromDb);   
   }
  
